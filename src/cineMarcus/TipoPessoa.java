@@ -8,9 +8,6 @@ package cineMarcus;
  *
  * @author ruan
  */
-public class Main {
-    public static void main(String[] argv)
-    {
-        System.out.println("Hello World");
-    }
+public enum TipoPessoa {
+    CLIENTE, ADMIN, INDEFINIDO
 }

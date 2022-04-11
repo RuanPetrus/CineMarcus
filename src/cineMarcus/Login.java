@@ -1,0 +1,81 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package cineMarcus;
+
+import cineMarcus.json.GerenciadorJson;
+import cineMarcus.exceptions.InvalidPasswordException;
+import cineMarcus.exceptions.InvalidUserException;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.json.JSONObject;
+
+
+public class Login extends GerenciadorJson<Pessoa> {
+   
+    private static Login instance;
+    
+    private Pessoa usuarioLogado;
+    
+    public Login() {
+        super("logins.json");
+    }
+    
+    public static Login getInstance() {
+        if (instance == null) {
+            instance = new Login();
+        }
+        return instance;
+    }
+    
+    public boolean existeContaNome(String nomeInserido) {
+        return valueCollection().stream().anyMatch(u -> u.getNomeDeUsuario().equals(nomeInserido));
+    }
+    
+    public boolean existeContaEmail(String emailInserido) {
+        return valueCollection().stream().anyMatch(u -> u.getEmail().equals(emailInserido));
+    }
+    
+
+    public void validaLogin(String nomeInserido, String senhaInserida) throws InvalidUserException, InvalidPasswordException {
+        Optional<Pessoa> optionalUsuario = valueCollection().stream().filter(u -> u.getNomeDeUsuario().equals(nomeInserido)).findFirst();
+        
+        if (optionalUsuario.isEmpty()) {
+            throw new InvalidUserException("Esse usuário não existe");
+        } else {
+            Pessoa usuario = optionalUsuario.get();
+            if (usuario.getSenha().equals(senhaInserida)) {
+                this.setUsuarioLogado(usuario);
+            } else {
+                throw new InvalidPasswordException("Senha incorreta");
+            }
+        }
+    }
+    
+   
+    public void setUsuarioLogado(Pessoa logado) {
+        this.usuarioLogado = logado;
+    }
+   
+    public Pessoa getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    @Override
+    protected Pessoa carregarObjeto(JSONObject json) {
+        TipoPessoa tipo = json.getEnum(TipoPessoa.class, "tipo");
+        switch (tipo) {
+            case CLIENTE -> {
+                return new Cliente(json);
+            }
+            case ADMIN -> {
+                return new Admin(json);
+            }
+            default -> Logger.getLogger(Login.class.getName()).log(Level.WARNING, "Tipo de usuario invalido");
+        }
+        return new Pessoa(json);
+    }
+}
