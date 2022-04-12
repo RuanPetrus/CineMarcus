@@ -1,0 +1,23 @@
+{
+    "contadorId": 3,
+    "dados": {
+        "1": {
+            "senha": "1234",
+            "dinheiro": 10,
+            "idade": 10,
+            "tipo": "CLIENTE",
+            "nomeDeUsuario": "Ruan Petrus",
+            "id": 1,
+            "email": "xastroboyx11@gmail.com"
+        },
+        "2": {
+            "senha": "1234",
+            "dinheiro": 10,
+            "idade": 10,
+            "tipo": "CLIENTE",
+            "nomeDeUsuario": "Ruan Petrus",
+            "id": 2,
+            "email": "xastroboyx11@gmail.com"
+        }
+    }
+}
