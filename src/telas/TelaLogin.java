@@ -4,18 +4,26 @@
  */
 package telas;
 
+import cineMarcus.Login;
+import cineMarcus.exceptions.InvalidPasswordException;
+import cineMarcus.exceptions.InvalidUserException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Bruno
  */
-public class Login extends javax.swing.JFrame {
+public class TelaLogin extends javax.swing.JFrame {
 
+    final private Login login;
     /**
      * Creates new form Final
      */
-    public Login() {
+    public TelaLogin() {
         initComponents();
         setLocationRelativeTo(null);
+        login = Login.getInstance();
+
     }
 
     /**
@@ -30,10 +38,11 @@ public class Login extends javax.swing.JFrame {
         LoginPanel = new javax.swing.JPanel();
         LoginImgLogo = new javax.swing.JLabel();
         LoginBtnRegistrar = new javax.swing.JButton();
-        LoginTxtSenha = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         LoginLblSenha = new javax.swing.JLabel();
-        javax.swing.JTextField LoginTxtLogin = new javax.swing.JTextField();
         LoginLblLogin = new javax.swing.JLabel();
+        btnLogar = new javax.swing.JButton();
+        txtLogin = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CineMarcus");
@@ -61,28 +70,29 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        LoginTxtSenha.setForeground(new java.awt.Color(204, 204, 204));
-        LoginTxtSenha.setText("senhasenha");
-        LoginTxtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtSenha.setForeground(new java.awt.Color(204, 204, 204));
+        txtSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         LoginLblSenha.setFont(new java.awt.Font("Cinemark", 0, 20)); // NOI18N
         LoginLblSenha.setForeground(new java.awt.Color(255, 0, 0));
         LoginLblSenha.setText("Senha");
 
-        LoginTxtLogin.setForeground(new java.awt.Color(153, 153, 153));
-        LoginTxtLogin.setText("Nome de usuário/Email");
-        LoginTxtLogin.setToolTipText("");
-        LoginTxtLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        LoginTxtLogin.setName(""); // NOI18N
-        LoginTxtLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginTxtLoginActionPerformed(evt);
-            }
-        });
-
         LoginLblLogin.setFont(new java.awt.Font("Cinemark", 0, 20)); // NOI18N
         LoginLblLogin.setForeground(new java.awt.Color(255, 0, 0));
         LoginLblLogin.setText("Login");
+
+        btnLogar.setText("Logar");
+        btnLogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogarActionPerformed(evt);
+            }
+        });
+
+        txtLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LoginPanelLayout = new javax.swing.GroupLayout(LoginPanel);
         LoginPanel.setLayout(LoginPanelLayout);
@@ -93,18 +103,20 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LoginImgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(LoginPanelLayout.createSequentialGroup()
-                            .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(LoginLblSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LoginLblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(LoginTxtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(LoginTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(51, 51, 51))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPanelLayout.createSequentialGroup()
                             .addGap(146, 146, 146)
-                            .addComponent(LoginBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(LoginBtnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(LoginPanelLayout.createSequentialGroup()
+                            .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnLogar)
+                                .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(LoginLblSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(LoginLblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(270, 270, 270))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LoginPanelLayout.setVerticalGroup(
@@ -115,14 +127,16 @@ public class Login extends javax.swing.JFrame {
                 .addGap(108, 108, 108)
                 .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginLblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LoginTxtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LoginLblSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPanelLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(LoginTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(btnLogar)
+                .addGap(35, 35, 35)
                 .addComponent(LoginBtnRegistrar)
                 .addContainerGap())
         );
@@ -151,10 +165,6 @@ public class Login extends javax.swing.JFrame {
         new ClienteOuFuncionario().setVisible(true);
     }//GEN-LAST:event_LoginBtnRegistrarActionPerformed
 
-    private void LoginTxtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginTxtLoginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LoginTxtLoginActionPerformed
-
     private void LoginBtnRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginBtnRegistrarMouseEntered
         LoginBtnRegistrar.setBackground(new java.awt.Color(255, 0, 0));
     }//GEN-LAST:event_LoginBtnRegistrarMouseEntered
@@ -162,6 +172,30 @@ public class Login extends javax.swing.JFrame {
     private void LoginBtnRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginBtnRegistrarMouseExited
         LoginBtnRegistrar.setBackground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_LoginBtnRegistrarMouseExited
+
+    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
+        String nomeOuEmail = txtLogin.getText();
+        String senha = new String(txtSenha.getPassword());
+        
+        if(nomeOuEmail.equals("") || senha.equals("")) {
+          JOptionPane.showMessageDialog(null, "Nome de usuário e/ou senha não informados", "Erro", JOptionPane.PLAIN_MESSAGE);
+
+        }else{
+                try {
+                    login.validaLogin(nomeOuEmail, senha);
+                    JOptionPane.showMessageDialog(null, "Login efetivado com sucesso");
+                    new TelaCinema().setVisible(true);
+                    dispose();
+            } catch (InvalidUserException | InvalidPasswordException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+         }
+
+    }//GEN-LAST:event_btnLogarActionPerformed
+
+    private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,21 +214,23 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new TelaLogin().setVisible(true);
             }
         });
     }
@@ -205,6 +241,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel LoginLblLogin;
     private javax.swing.JLabel LoginLblSenha;
     private javax.swing.JPanel LoginPanel;
-    private javax.swing.JPasswordField LoginTxtSenha;
+    private javax.swing.JButton btnLogar;
+    private javax.swing.JTextField txtLogin;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

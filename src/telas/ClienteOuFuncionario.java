@@ -53,6 +53,11 @@ public class ClienteOuFuncionario extends javax.swing.JFrame {
                 COFBtnClienteMouseExited(evt);
             }
         });
+        COFBtnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COFBtnClienteActionPerformed(evt);
+            }
+        });
 
         COFBtnFuncionario.setBackground(new java.awt.Color(255, 255, 255));
         COFBtnFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/funcionario.png"))); // NOI18N
@@ -63,6 +68,11 @@ public class ClienteOuFuncionario extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 COFBtnFuncionarioMouseExited(evt);
+            }
+        });
+        COFBtnFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                COFBtnFuncionarioActionPerformed(evt);
             }
         });
 
@@ -124,6 +134,16 @@ public class ClienteOuFuncionario extends javax.swing.JFrame {
 
         COFBtnFuncionario.setBackground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_COFBtnFuncionarioMouseExited
+
+    private void COFBtnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COFBtnClienteActionPerformed
+        new CadastroCliente().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_COFBtnClienteActionPerformed
+
+    private void COFBtnFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_COFBtnFuncionarioActionPerformed
+        new CadastroFuncionario().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_COFBtnFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments

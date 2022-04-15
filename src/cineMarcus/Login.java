@@ -40,19 +40,21 @@ public class Login extends GerenciadorJson<Pessoa> {
     }
     
 
-    public void validaLogin(String nomeInserido, String senhaInserida) throws InvalidUserException, InvalidPasswordException {
-        Optional<Pessoa> optionalUsuario = valueCollection().stream().filter(u -> u.getNomeDeUsuario().equals(nomeInserido)).findFirst();
+    public void validaLogin(String nomeOuEmailInserido, String senhaInserida) throws InvalidUserException, InvalidPasswordException {
+        Optional<Pessoa> optionalUsuario = valueCollection().stream().filter(u -> u.getNomeDeUsuario().equals(nomeOuEmailInserido)).findFirst();
         
         if (optionalUsuario.isEmpty()) {
-            throw new InvalidUserException("Esse usuário não existe");
-        } else {
-            Pessoa usuario = optionalUsuario.get();
-            if (usuario.getSenha().equals(senhaInserida)) {
-                this.setUsuarioLogado(usuario);
-            } else {
-                throw new InvalidPasswordException("Senha incorreta");
+            optionalUsuario = valueCollection().stream().filter(u -> u.getEmail().equals(nomeOuEmailInserido)).findFirst();
+            if (optionalUsuario.isEmpty()) {
+                throw new InvalidUserException("Esse usuário não existe");
             }
         }
+        Pessoa usuario = optionalUsuario.get();
+        if (usuario.getSenha().equals(senhaInserida)) {
+            this.setUsuarioLogado(usuario);
+        } else {
+            throw new InvalidPasswordException("Senha incorreta");
+          }
     }
     
    
