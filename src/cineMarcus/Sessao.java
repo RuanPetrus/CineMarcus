@@ -4,8 +4,9 @@
  */
 package cineMarcus;
 
-import java.time.LocalDateTime;
 import cineMarcus.json.JsonSerializavel;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.json.JSONObject;
@@ -13,15 +14,14 @@ import org.json.JSONObject;
 
 public class Sessao implements JsonSerializavel{
     private Integer id;
-    private LocalDateTime data;
+    private Date data;
     private Integer sala;
     private List<Boolean> assentos;
     private boolean isDub;
     private double preco;
     private Integer filmeId;
 
-    public Sessao(Integer id, LocalDateTime data, Integer sala, List<Boolean> assentos, boolean isDub, double preco, Integer filmeId) {
-        this.id = id;
+    public Sessao(Date data, Integer sala, List<Boolean> assentos, boolean isDub, double preco, Integer filmeId) {
         this.data = data;
         this.sala = sala;
         this.assentos = assentos;
@@ -31,8 +31,13 @@ public class Sessao implements JsonSerializavel{
     }
     
     public Sessao(JSONObject json) {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy H:mm");
+        try {
+            data = formato.parse(json.getString("data"));
+        }catch (Exception e) {
+           System.out.println("Unable ro read from json");
+        }
         id = json.getInt("id");
-        data = LocalDateTime.parse(json.getString("data"));
         sala = json.getInt("sala");
         assentos = json.getJSONArray("assentos").toList().stream().map(o -> (Boolean) o).collect(Collectors.toList());
         isDub = json.getBoolean("isDub");
@@ -40,7 +45,7 @@ public class Sessao implements JsonSerializavel{
         filmeId = json.getInt("filmeId");
     }
 
-    public void setData(LocalDateTime data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -64,7 +69,7 @@ public class Sessao implements JsonSerializavel{
         this.filmeId = filmeId;
     }
 
-    public LocalDateTime getData() {
+    public Date getData() {
         return data;
     }
 

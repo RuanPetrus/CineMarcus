@@ -5,6 +5,7 @@
 package telas;
 
 import cineMarcus.Login;
+import cineMarcus.TipoPessoa;
 import cineMarcus.exceptions.InvalidPasswordException;
 import cineMarcus.exceptions.InvalidUserException;
 import javax.swing.JOptionPane;
@@ -184,7 +185,13 @@ public class TelaLogin extends javax.swing.JFrame {
                 try {
                     login.validaLogin(nomeOuEmail, senha);
                     JOptionPane.showMessageDialog(null, "Login efetivado com sucesso");
-                    new TelaCinema().setVisible(true);
+                    
+                    if(login.getUsuarioLogado().getTipo() == TipoPessoa.ADMIN) {
+                       new PainelDoAdmin().setVisible(true);
+                     } else {
+                        new TelaCinema().setVisible(true);
+                    }
+                    
                     dispose();
             } catch (InvalidUserException | InvalidPasswordException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
