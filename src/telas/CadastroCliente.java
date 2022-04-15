@@ -122,8 +122,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         String nomeDeUsuario = txtNomeDeUsuario.getText();
         String email = txtEmail.getText();
         String senha = txtSenha.getText();
-        int idade = Integer.parseInt( txtIdade.getText());
-        
+        try {
+            int idade = Integer.parseInt( txtIdade.getText());
+            if (idade <= 0) {
+                throw new NumberFormatException();
+            }
+            
         if(nomeDeUsuario.equals("") || email.equals("") || senha.equals("") || txtIdade.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos os campos de cadastro devem estar preenchidos");
         }else if(login.existeContaNome(nomeDeUsuario)) {
@@ -143,6 +147,11 @@ public class CadastroCliente extends javax.swing.JFrame {
             dispose();
 
         }
+            
+            
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Insira um valor válido", "Erro", JOptionPane.ERROR_MESSAGE);
+        }        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
