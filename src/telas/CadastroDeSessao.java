@@ -231,13 +231,13 @@ public class CadastroDeSessao extends javax.swing.JFrame {
             double precoD = Double.parseDouble(preco);
             int salaI = Integer.parseInt(sala);
             
-            ArrayList<Boolean> assentos = new ArrayList<Boolean>(Collections.nCopies(36, false));
+            ArrayList<Boolean> assentos = new ArrayList<Boolean>(Collections.nCopies(90, false));
             
             Sessao novaSessao = new Sessao(dataFilme, salaI, assentos, dublado, precoD, filmeId);
             
             sessaoController.add(novaSessao);
             
-            JOptionPane.showMessageDialog(null, "Filme Criado com sucesso");
+            JOptionPane.showMessageDialog(null, "Sessao Criada com sucesso");
             dispose();
             
         } catch (Exception ex) {

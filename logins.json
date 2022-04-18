@@ -12,7 +12,7 @@
         },
         "2": {
             "senha": "123",
-            "dinheiro": 0,
+            "dinheiro": 246,
             "idade": -15,
             "tipo": "CLIENTE",
             "nomeDeUsuario": "cliente",

@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bruno/Desktop/UNB/3Semestre/TP1/CineMarcus/src/cineMarcus/json/GerenciadorJson.java</file>
-            <file>file:/C:/Users/bruno/Desktop/UNB/3Semestre/TP1/CineMarcus/src/telas/TelaFilme.java</file>
-            <file>file:/C:/Users/bruno/Desktop/UNB/3Semestre/TP1/CineMarcus/src/cineMarcus/SessaoController.java</file>
-            <file>file:/C:/Users/bruno/Desktop/UNB/3Semestre/TP1/CineMarcus/src/telas/PainelDoAdmin.java</file>
-            <file>file:/C:/Users/bruno/Desktop/UNB/3Semestre/TP1/CineMarcus/src/telas/TelaCinema.java</file>
-            <file>file:/C:/Users/bruno/Desktop/UNB/3Semestre/TP1/CineMarcus/src/cineMarcus/Filme.java</file>
-            <file>file:/C:/Users/bruno/Desktop/UNB/3Semestre/TP1/CineMarcus/src/telas/CadastroDeSessao.java</file>
-            <file>file:/C:/Users/bruno/Desktop/UNB/3Semestre/TP1/CineMarcus/src/cineMarcus/FilmeController.java</file>
+            <file>file:/home/ruan/dev/CineMarcus/src/cineMarcus/Cliente.java</file>
+            <file>file:/home/ruan/dev/CineMarcus/src/telas/PainelDoAdmin.java</file>
+            <file>file:/home/ruan/dev/CineMarcus/src/telas/CadastroDeSessao.java</file>
         </group>
     </open-files>
 </project-private>

@@ -4,19 +4,70 @@
  */
 package telas;
 
+import cineMarcus.Filme;
+import cineMarcus.FilmeController;
+import cineMarcus.SessaoController;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author ruan
  */
 public class PainelDoAdmin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PainelDoAdmin
-     */
+    private final FilmeController filmeController;
+    private final SessaoController sessaoController;
+    private final List<Filme> listaFilmes;
+
+    
     public PainelDoAdmin() {
         initComponents();
         setLocationRelativeTo(null);
+        filmeController = FilmeController.getInstance();
+        sessaoController = SessaoController.getInstance();
+        listaFilmes = filmeController.getFilmes().parallelStream().collect(Collectors.toList());
+        carregarFilmes();
+
     }
+    
+        public void carregarFilmes(){
+        pnlFilmes.removeAll();
+        
+        for (int i = 0; i < listaFilmes.size(); i++) {          
+            Filme filme = listaFilmes.get(i);
+
+            int x = 25 + (167 * (i / 2));
+            int y = 25 + (165 * (i % 2));
+            
+            JLabel labelFilme = new JLabel();
+            PainelDoAdmin self = this;
+            labelFilme.setIcon(new ImageIcon(filme.getPoster()));
+            
+            //labelFilme.addMouseListener(new java.awt.event.MouseAdapter() {
+                //@Override
+                //public void mouseClicked(java.awt.event.MouseEvent evt) {
+                 //   new PainelDoAdmin(filme, self).setVisible(true);
+                //}
+            //});
+            
+            labelFilme.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            labelFilme.setBounds(x, y, 117, 150);
+            pnlFilmes.add(labelFilme);
+            
+            if (i == listaFilmes.size() - 1) {
+                pnlFilmes.setPreferredSize(new Dimension(x + 132, 409));
+            }
+            
+            pnlFilmes.revalidate();
+            pnlFilmes.repaint();
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,6 +84,7 @@ public class PainelDoAdmin extends javax.swing.JFrame {
         BtnCS = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         LoginImgLogo1 = new javax.swing.JLabel();
+        pnlFilmes = new javax.swing.JScrollPane();
 
         LoginImgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LoginImgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
@@ -80,37 +132,45 @@ public class PainelDoAdmin extends javax.swing.JFrame {
         LoginImgLogo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LoginImgLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
 
+        pnlFilmes.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 36, Short.MAX_VALUE)
-                .addComponent(LoginImgLogo1)
-                .addGap(22, 22, 22))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnCS, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnCF, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(133, 133, 133))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnlFilmes))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(147, 147, 147)
+                            .addComponent(LoginImgLogo1))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(BtnCS, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(123, 123, 123)
+                            .addComponent(BtnCF, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(243, 243, 243)
+                            .addComponent(jLabel1))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LoginImgLogo1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
-                .addComponent(BtnCF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(BtnCS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(4, 4, 4)
+                .addComponent(pnlFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnCS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnCF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
 
         BtnCF.getAccessibleContext().setAccessibleDescription("");
@@ -199,5 +259,6 @@ public class PainelDoAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel LoginImgLogo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane pnlFilmes;
     // End of variables declaration//GEN-END:variables
 }
