@@ -95,7 +95,7 @@ public class CadastroDeSessao extends javax.swing.JFrame {
 
         jLabel4.setText("Data");
 
-        btnCriarFilme.setText("Criar Filme");
+        btnCriarFilme.setText("Criar Sessão");
         btnCriarFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCriarFilmeActionPerformed(evt);
@@ -158,22 +158,19 @@ public class CadastroDeSessao extends javax.swing.JFrame {
     private void btnCriarFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarFilmeActionPerformed
         String sala = txtSala.getText();
         String preco = txtPreco.getText();
-        
+        String dataFilme = txtData.getText();
         
         boolean dublado = chkDublado.isSelected();
 
         
         try {
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy H:mm");
-            Date dataFilme = formato.parse(txtData.getText());
-            
             int filmeIndex = cmbFilme.getSelectedIndex();
             int filmeId = listaFilmes.get(filmeIndex - 1).getId();
             
             double precoD = Double.parseDouble(preco);
             int salaI = Integer.parseInt(sala);
             
-            ArrayList<Boolean> assentos = new ArrayList<Boolean>(Collections.nCopies(144, false));
+            ArrayList<Boolean> assentos = new ArrayList<Boolean>(Collections.nCopies(36, false));
             
             Sessao novaSessao = new Sessao(dataFilme, salaI, assentos, dublado, precoD, filmeId);
             

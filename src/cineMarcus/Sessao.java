@@ -14,14 +14,14 @@ import org.json.JSONObject;
 
 public class Sessao implements JsonSerializavel{
     private Integer id;
-    private Date data;
+    private String data;
     private Integer sala;
     private List<Boolean> assentos;
     private boolean isDub;
     private double preco;
     private Integer filmeId;
 
-    public Sessao(Date data, Integer sala, List<Boolean> assentos, boolean isDub, double preco, Integer filmeId) {
+    public Sessao(String data, Integer sala, List<Boolean> assentos, boolean isDub, double preco, Integer filmeId) {
         this.data = data;
         this.sala = sala;
         this.assentos = assentos;
@@ -31,12 +31,7 @@ public class Sessao implements JsonSerializavel{
     }
     
     public Sessao(JSONObject json) {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy H:mm");
-        try {
-            data = formato.parse(json.getString("data"));
-        }catch (Exception e) {
-           System.out.println("Unable ro read from json");
-        }
+        data = json.getString("data");
         id = json.getInt("id");
         sala = json.getInt("sala");
         assentos = json.getJSONArray("assentos").toList().stream().map(o -> (Boolean) o).collect(Collectors.toList());
@@ -45,7 +40,7 @@ public class Sessao implements JsonSerializavel{
         filmeId = json.getInt("filmeId");
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -69,7 +64,7 @@ public class Sessao implements JsonSerializavel{
         this.filmeId = filmeId;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
@@ -81,7 +76,7 @@ public class Sessao implements JsonSerializavel{
         return assentos;
     }
 
-    public boolean isIsDub() {
+    public boolean isDub() {
         return isDub;
     }
 
@@ -108,7 +103,7 @@ public class Sessao implements JsonSerializavel{
         JSONObject json = new JSONObject();
         
         json.put("id", id);
-        json.put("data", data.toString());
+        json.put("data", data);
         json.put("sala", sala);
         json.put("preco", preco);
         json.put("assentos", assentos);
