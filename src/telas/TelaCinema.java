@@ -28,6 +28,7 @@ public class TelaCinema extends javax.swing.JFrame {
     public TelaCinema() {
         
         initComponents();
+        setLocationRelativeTo(null);
         filmeController = FilmeController.getInstance();
         sessaoController = SessaoController.getInstance();
         listaFilmes = filmeController.getFilmes().parallelStream().collect(Collectors.toList());
@@ -122,7 +123,7 @@ public class TelaCinema extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
-        new TelaMinhaInfo().setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnInfoActionPerformed
 
     /**
