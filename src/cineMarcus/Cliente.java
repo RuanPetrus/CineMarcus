@@ -35,10 +35,6 @@ public class Cliente extends Pessoa{
         return this.dinheiro;
     }
     
-    public int getIdade() {
-        return this.idade;
-    }
-    
     @Override
     public TipoPessoa getTipo() {
         return TipoPessoa.CLIENTE;
