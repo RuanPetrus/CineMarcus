@@ -122,7 +122,7 @@ public class TelaCinema extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
-        // TODO add your handling code here:
+        new TelaMinhaInfo().setVisible(true);
     }//GEN-LAST:event_btnInfoActionPerformed
 
     /**
