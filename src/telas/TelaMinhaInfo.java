@@ -155,6 +155,7 @@ public class TelaMinhaInfo extends javax.swing.JFrame {
             cliente.setDinheiro(cliente.getDinheiro() + quantidade);
             carregarInformacoes();
             login.salvarJson();
+            
             txtQuantidade.setText("");
             
             

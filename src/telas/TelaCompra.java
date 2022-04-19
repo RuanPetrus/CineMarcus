@@ -249,6 +249,7 @@ public class TelaCompra extends javax.swing.JFrame {
             }
             sessao.setAssentos(lista2);
             login.salvarJson();
+            sessaoController.salvarJson();
             if(user.getIdade()< filmeController.get(sessao.getFilmeId()).getClassificacao()){
                 JOptionPane.showMessageDialog(null, "Para entrar na sessão, apareça com um responsável", "Idade fora da Classificação Indicativa", JOptionPane.WARNING_MESSAGE);
             }

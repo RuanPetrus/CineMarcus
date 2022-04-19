@@ -3,9 +3,9 @@
     "dados": {"1": {
         "preco": 20,
         "assentos": [
-            false,
-            false,
-            false,
+            true,
+            true,
+            true,
             false,
             false,
             false,
