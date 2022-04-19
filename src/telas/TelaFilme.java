@@ -30,7 +30,7 @@ import javax.swing.JOptionPane;
 public class TelaFilme extends javax.swing.JFrame {
     private final List<Sessao> listaSessoes;
     private final SessaoController sessaoController;
-    private final List<Boolean> listaSelected;
+    public final List<Boolean> listaSelected;
 
     
     private final Filme filme;
@@ -54,9 +54,12 @@ public class TelaFilme extends javax.swing.JFrame {
         int y = (idx/15)+1;
         int x = idx%15;
         
-        if(x==0)x=y*15;
+        if(idx%15==0){
+            x=15;
+            y-=1;
+        }
         
-        return ('A'+y-1)+Integer.toString(x);
+        return (char)('@'+y)+Integer.toString(x);
     }
     
     
@@ -524,12 +527,7 @@ public class TelaFilme extends javax.swing.JFrame {
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
 
         boolean flag=false;
-        ArrayList<String> selecionado = new ArrayList<String>();
-        
-        for(boolean item: listaSelected) {
-                System.out.println(item);
-            }
-        
+        ArrayList<String> selecionado = new ArrayList<String>();   
         
         for(int i=0; i<listaSelected.size(); i++){
             if(listaSelected.get(i)){
@@ -540,12 +538,14 @@ public class TelaFilme extends javax.swing.JFrame {
         if(!flag){
             JOptionPane.showMessageDialog(null, "Selecione ao menos um assento", "Erro", JOptionPane.ERROR_MESSAGE);
         }else{
+            String assentos = "";
             for(String item: selecionado) {
-                System.out.println(item);
+                assentos+= item + " ";
             }
-        }
             
-            
+            new TelaCompra(this, assentos, cmbSessoes.getSelectedIndex()-1, selecionado.size()).setVisible(true);
+            dispose();
+        }  
     }//GEN-LAST:event_btnComprarActionPerformed
 
        

@@ -78,7 +78,7 @@ public class TelaCinema extends javax.swing.JFrame {
         pnlFilmes = new javax.swing.JScrollPane();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnInfo.setText("Minhas Informações");
         btnInfo.addActionListener(new java.awt.event.ActionListener() {

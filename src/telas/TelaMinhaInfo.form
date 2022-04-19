@@ -116,10 +116,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNomeDeUsuario">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdade">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDinheiro">
       <Properties>
@@ -127,6 +136,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDinheiro">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
