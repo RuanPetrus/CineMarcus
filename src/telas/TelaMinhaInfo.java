@@ -50,7 +50,7 @@ public class TelaMinhaInfo extends javax.swing.JFrame {
         txtQuantidade = new javax.swing.JTextField();
         btnAdicionar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nome de Usuario:");
 
@@ -58,7 +58,15 @@ public class TelaMinhaInfo extends javax.swing.JFrame {
 
         jLabel3.setText("Idade:");
 
+        txtNomeDeUsuario.setEditable(false);
+
+        txtEmail.setEditable(false);
+
+        txtIdade.setEditable(false);
+
         lblDinheiro.setText("DInheiro: ");
+
+        txtDinheiro.setEditable(false);
 
         jLabel4.setFont(new java.awt.Font("Nimbus Sans", 0, 24)); // NOI18N
         jLabel4.setText("Adicionar Dinheiro");
@@ -141,14 +149,18 @@ public class TelaMinhaInfo extends javax.swing.JFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         try {
             float quantidade = Float.parseFloat(txtQuantidade.getText());
+            if(quantidade<=0){
+                throw new NumberFormatException();
+            }
             cliente.setDinheiro(cliente.getDinheiro() + quantidade);
             carregarInformacoes();
             login.salvarJson();
+            txtQuantidade.setText("");
             
             
         } catch(NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Insira um valor válido", "Erro", JOptionPane.ERROR_MESSAGE);
-            txtDinheiro.setText("");
+            txtQuantidade.setText("");
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
