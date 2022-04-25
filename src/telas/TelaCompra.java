@@ -9,10 +9,16 @@ import cineMarcus.FilmeController;
 import cineMarcus.Login;
 import cineMarcus.Sessao;
 import cineMarcus.SessaoController;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.text.Document;
 
 /**
  *
@@ -196,14 +202,13 @@ public class TelaCompra extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 17, Short.MAX_VALUE)
+                                .addGap(0, 21, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtPrecoInd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAssento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -253,7 +258,35 @@ public class TelaCompra extends javax.swing.JFrame {
             if(user.getIdade()< filmeController.get(sessao.getFilmeId()).getClassificacao()){
                 JOptionPane.showMessageDialog(null, "Para entrar na sessão, apareça com um responsável", "Idade fora da Classificação Indicativa", JOptionPane.WARNING_MESSAGE);
             }
-            JOptionPane.showMessageDialog(null, "Compra concluída, aproveite!");
+            
+            
+            
+            JFrame parentComponent = new JFrame();
+            JFileChooser fileChooser= new JFileChooser();
+            // Some init code, if you need one, like setting title
+            int returnVal = fileChooser.showOpenDialog(parentComponent);
+            if ( returnVal == JFileChooser.APPROVE_OPTION) {
+                File fileToSave = fileChooser.getSelectedFile();
+                try{
+                    
+                    FileWriter fileWriter = new FileWriter(fileToSave);
+                    PrintWriter printWriter = new PrintWriter(fileWriter);                 
+                    printWriter.printf("Filme: %s\n", filmeController.get(sessao.getFilmeId()).getNome());
+                    printWriter.printf("Assentos: %s\n", assentos);
+                    printWriter.printf("Sala: %d\n", sessao.getSala());
+                    printWriter.printf("Horario: %s\n", sessao.getData());
+                    printWriter.printf("Quantidade De Ingressos: %d\n", quantidade);
+                    printWriter.close();
+                    
+                    JOptionPane.showMessageDialog(null, "Ingresso salvo");
+                    
+                    JOptionPane.showMessageDialog(null, "Compra concluída, aproveite!");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+            
             
             dispose();
         }
