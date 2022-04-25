@@ -478,6 +478,9 @@
               <Image iconType="3" name="/imagens/seta.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltar1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

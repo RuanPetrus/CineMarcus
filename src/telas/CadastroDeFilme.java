@@ -322,6 +322,7 @@ public class CadastroDeFilme extends javax.swing.JFrame {
 
     private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
         dispose();
+        new PainelDoAdmin().setVisible(true);
     }//GEN-LAST:event_btnVoltar1ActionPerformed
 
     /**

@@ -357,6 +357,11 @@ public class TelaFilme extends javax.swing.JFrame {
         btnVoltar1.setBackground(new java.awt.Color(255, 255, 255));
         btnVoltar1.setForeground(new java.awt.Color(255, 255, 255));
         btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/seta.png"))); // NOI18N
+        btnVoltar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlFilmesLayout = new javax.swing.GroupLayout(pnlFilmes);
         pnlFilmes.setLayout(pnlFilmesLayout);
@@ -638,6 +643,11 @@ public class TelaFilme extends javax.swing.JFrame {
     private void btnComprarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarMouseExited
         btnComprar.setBackground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_btnComprarMouseExited
+
+    private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
+        dispose();
+        new TelaCinema().setVisible(true);
+    }//GEN-LAST:event_btnVoltar1ActionPerformed
 
        
     /**
