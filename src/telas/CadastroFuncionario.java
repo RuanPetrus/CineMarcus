@@ -271,7 +271,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
-        new ClienteOuFuncionario().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**

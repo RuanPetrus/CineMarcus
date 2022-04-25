@@ -86,6 +86,7 @@ public class PainelDoAdmin extends javax.swing.JFrame {
         LoginImgLogo1 = new javax.swing.JLabel();
         pnlFilmes = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
+        btnVoltar1 = new javax.swing.JButton();
 
         LoginImgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LoginImgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
@@ -140,15 +141,23 @@ public class PainelDoAdmin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnVoltar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnVoltar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/seta.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 96, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnVoltar1)
+                .addGap(0, 43, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 104, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnVoltar1)
+                .addGap(0, 67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -280,6 +289,7 @@ public class PainelDoAdmin extends javax.swing.JFrame {
     private javax.swing.JButton BtnCS;
     private javax.swing.JLabel LoginImgLogo;
     private javax.swing.JLabel LoginImgLogo1;
+    private javax.swing.JButton btnVoltar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
