@@ -31,9 +31,10 @@ public class ClienteOuFuncionario extends javax.swing.JFrame {
         COFimgLogo = new javax.swing.JLabel();
         COFBtnCliente = new javax.swing.JButton();
         COFBtnFuncionario = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CineMarcus");
+        setTitle("CineMarcus - Seleção Cliente/Funcionário");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/icon.png")).getImage());
 
         COFpanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -76,39 +77,52 @@ public class ClienteOuFuncionario extends javax.swing.JFrame {
             }
         });
 
+        btnVoltar.setBackground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/seta.png"))); // NOI18N
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout COFpanelLayout = new javax.swing.GroupLayout(COFpanel);
         COFpanel.setLayout(COFpanelLayout);
         COFpanelLayout.setHorizontalGroup(
             COFpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(COFpanelLayout.createSequentialGroup()
-                .addGroup(COFpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(COFpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(COFpanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, COFpanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(COFimgLogo))
+                    .addGroup(COFpanelLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
                         .addComponent(COFBtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(COFBtnFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         COFpanelLayout.setVerticalGroup(
             COFpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(COFpanelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addContainerGap()
+                .addGroup(COFpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVoltar)
+                    .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(COFpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(COFBtnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(COFBtnFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(COFpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(COFpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,6 +160,10 @@ public class ClienteOuFuncionario extends javax.swing.JFrame {
         new CadastroFuncionario().setVisible(true);
         dispose();
     }//GEN-LAST:event_COFBtnFuncionarioActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,5 +205,7 @@ public class ClienteOuFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton COFBtnFuncionario;
     private javax.swing.JLabel COFimgLogo;
     private javax.swing.JPanel COFpanel;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton btnVoltar1;
     // End of variables declaration//GEN-END:variables
 }

@@ -40,6 +40,7 @@ public class TelaFilme extends javax.swing.JFrame {
      */
     public TelaFilme(Filme filme, TelaCinema cine) {
         initComponents();
+        setLocationRelativeTo(null);
         this.filme = filme;
         sessaoController = SessaoController.getInstance();
         listaSelected = new ArrayList<Boolean>(Collections.nCopies(90, false));
@@ -141,10 +142,13 @@ public class TelaFilme extends javax.swing.JFrame {
         btnComprar = new javax.swing.JButton();
         btnProcurar = new javax.swing.JButton();
         COFimgLogo = new javax.swing.JLabel();
+        btnVoltar1 = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CineMarcus - Sobre o filme/ Seleção de assentos");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/icon.png")).getImage());
 
         pnlFilmes.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -350,6 +354,10 @@ public class TelaFilme extends javax.swing.JFrame {
         COFimgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         COFimgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
 
+        btnVoltar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnVoltar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/seta.png"))); // NOI18N
+
         javax.swing.GroupLayout pnlFilmesLayout = new javax.swing.GroupLayout(pnlFilmes);
         pnlFilmes.setLayout(pnlFilmesLayout);
         pnlFilmesLayout.setHorizontalGroup(
@@ -358,7 +366,8 @@ public class TelaFilme extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFilmesLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVoltar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(185, 185, 185))
                     .addGroup(pnlFilmesLayout.createSequentialGroup()
@@ -393,7 +402,11 @@ public class TelaFilme extends javax.swing.JFrame {
         pnlFilmesLayout.setVerticalGroup(
             pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlFilmesLayout.createSequentialGroup()
-                .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlFilmesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVoltar1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblFilme)
                 .addGap(22, 22, 22)
@@ -666,6 +679,7 @@ public class TelaFilme extends javax.swing.JFrame {
     private javax.swing.JLabel COFimgLogo;
     private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnProcurar;
+    private javax.swing.JButton btnVoltar1;
     private javax.swing.JCheckBox checkDub;
     private javax.swing.JComboBox<String> cmbSessoes;
     private javax.swing.JLabel jLabel1;

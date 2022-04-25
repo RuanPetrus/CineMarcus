@@ -28,6 +28,7 @@ public class TelaCinema extends javax.swing.JFrame {
     public TelaCinema() {
         
         initComponents();
+        setLocationRelativeTo(null);
         filmeController = FilmeController.getInstance();
         sessaoController = SessaoController.getInstance();
         listaFilmes = filmeController.getFilmes().parallelStream().collect(Collectors.toList());
@@ -80,8 +81,11 @@ public class TelaCinema extends javax.swing.JFrame {
         BtnMI = new javax.swing.JButton();
         COFimgLogo = new javax.swing.JLabel();
         pnlFilmes = new javax.swing.JScrollPane();
+        btnVoltar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CineMarcus - Filmes em Cartaz");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/icon.png")).getImage());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -110,6 +114,15 @@ public class TelaCinema extends javax.swing.JFrame {
 
         pnlFilmes.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
+        btnVoltar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnVoltar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/seta.png"))); // NOI18N
+        btnVoltar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,14 +131,16 @@ public class TelaCinema extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 174, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(109, 109, 109)))
+                                .addGap(109, 109, 109))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                                .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)))
                         .addComponent(BtnMI, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlFilmes))
                 .addContainerGap())
@@ -136,8 +151,13 @@ public class TelaCinema extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnVoltar1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(BtnMI, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -170,6 +190,10 @@ public class TelaCinema extends javax.swing.JFrame {
     private void BtnMIMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnMIMouseExited
         BtnMI.setBackground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_BtnMIMouseExited
+
+    private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltar1ActionPerformed
 
                          
     /**
@@ -210,6 +234,7 @@ public class TelaCinema extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnMI;
     private javax.swing.JLabel COFimgLogo;
+    private javax.swing.JButton btnVoltar1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane pnlFilmes;
