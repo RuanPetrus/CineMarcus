@@ -12,13 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/ruan/dev/CineMarcus/src/cineMarcus/Pessoa.java</file>
             <file>file:/home/ruan/dev/CineMarcus/src/cineMarcus/Cliente.java</file>
+            <file>file:/home/ruan/dev/CineMarcus/src/cineMarcus/Admin.java</file>
             <file>file:/home/ruan/dev/CineMarcus/src/telas/CadastroFuncionario.java</file>
             <file>file:/home/ruan/dev/CineMarcus/src/telas/PainelDoAdmin.java</file>
             <file>file:/home/ruan/dev/CineMarcus/src/telas/TelaCinema.java</file>
             <file>file:/home/ruan/dev/CineMarcus/src/telas/TelaFilme.java</file>
-            <file>file:/home/ruan/dev/CineMarcus/src/telas/ClienteOuFuncionario.java</file>
-            <file>file:/home/ruan/dev/CineMarcus/src/telas/TelaCompra.java</file>
+
             <file>file:/home/ruan/dev/CineMarcus/src/telas/CadastroDeSessao.java</file>
             <file>file:/home/ruan/dev/CineMarcus/src/telas/CadastroCliente.java</file>
             <file>file:/home/ruan/dev/CineMarcus/src/telas/CadastroDeFilme.java</file>

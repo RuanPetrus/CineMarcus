@@ -54,15 +54,17 @@ public class CadastroDeFilme extends javax.swing.JFrame {
         lblNome = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblSinopse = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         lblGenero = new javax.swing.JLabel();
         lblClassificacao = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtSinopse = new javax.swing.JTextField();
         txtGenero = new javax.swing.JTextField();
         COFimgLogo = new javax.swing.JLabel();
+        btnVoltar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CineMarcus - Cadastro de Filme");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/icon.png")).getImage());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -75,6 +77,14 @@ public class CadastroDeFilme extends javax.swing.JFrame {
         });
 
         btnInserirImagem.setText("Inserir Imagem");
+        btnInserirImagem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnInserirImagemMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnInserirImagemMouseExited(evt);
+            }
+        });
         btnInserirImagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInserirImagemActionPerformed(evt);
@@ -85,6 +95,14 @@ public class CadastroDeFilme extends javax.swing.JFrame {
         lblPreviaImagem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnCriar.setText("Adicionar ");
+        btnCriar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCriarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCriarMouseExited(evt);
+            }
+        });
         btnCriar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCriarActionPerformed(evt);
@@ -100,8 +118,6 @@ public class CadastroDeFilme extends javax.swing.JFrame {
 
         lblSinopse.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         lblSinopse.setText("Sinopse:");
-
-        jButton1.setText("Voltar");
 
         lblGenero.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         lblGenero.setText("Gênero:");
@@ -127,21 +143,24 @@ public class CadastroDeFilme extends javax.swing.JFrame {
         COFimgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         COFimgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
 
+        btnVoltar1.setBackground(new java.awt.Color(255, 255, 255));
+        btnVoltar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/seta.png"))); // NOI18N
+        btnVoltar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(btnCriar)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSinopse)
                             .addComponent(lblGenero)
@@ -149,10 +168,6 @@ public class CadastroDeFilme extends javax.swing.JFrame {
                             .addComponent(lblNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
-                                .addComponent(btnInserirImagem))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(1, 1, 1)
@@ -163,14 +178,26 @@ public class CadastroDeFilme extends javax.swing.JFrame {
                                         .addComponent(txtClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblPreviaImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(lblPreviaImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnCriar)
+                                    .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(55, 55, 55)
+                                .addComponent(btnInserirImagem))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,17 +217,15 @@ public class CadastroDeFilme extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSinopse))
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCriar)
-                            .addComponent(jButton1)))
+                            .addComponent(lblSinopse)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(lblPreviaImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnInserirImagem)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(btnCriar)
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -279,6 +304,27 @@ public class CadastroDeFilme extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSinopseActionPerformed
 
+    private void btnCriarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarMouseEntered
+        btnCriar.setBackground(new java.awt.Color(255, 0, 0));
+    }//GEN-LAST:event_btnCriarMouseEntered
+
+    private void btnCriarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarMouseExited
+        btnCriar.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_btnCriarMouseExited
+
+    private void btnInserirImagemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInserirImagemMouseExited
+        btnInserirImagem.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_btnInserirImagemMouseExited
+
+    private void btnInserirImagemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInserirImagemMouseEntered
+        btnInserirImagem.setBackground(new java.awt.Color(255, 0, 0));
+    }//GEN-LAST:event_btnInserirImagemMouseEntered
+
+    private void btnVoltar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltar1ActionPerformed
+        dispose();
+        new PainelDoAdmin().setVisible(true);
+    }//GEN-LAST:event_btnVoltar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,7 +364,7 @@ public class CadastroDeFilme extends javax.swing.JFrame {
     private javax.swing.JLabel COFimgLogo;
     private javax.swing.JButton btnCriar;
     private javax.swing.JButton btnInserirImagem;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnVoltar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblClassificacao;
