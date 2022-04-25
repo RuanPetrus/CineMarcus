@@ -90,7 +90,7 @@ public class TelaFilme extends javax.swing.JFrame {
             JLabel labelFilme = new JLabel();
             labelFilme.setIcon(new ImageIcon(filme.getPoster()));
             labelFilme.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-            labelFilme.setBounds(600, 25, 117, 150);
+            labelFilme.setBounds(550, 100, 130, 190);
             pnlFilmes.add(labelFilme);
             
             pnlFilmes.revalidate();
