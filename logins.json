@@ -1,5 +1,5 @@
 {
-    "contadorId": 3,
+    "contadorId": 4,
     "dados": {
         "1": {
             "senha": "123",
@@ -18,6 +18,15 @@
             "nomeDeUsuario": "cliente",
             "id": 2,
             "email": "cliente@email.com"
+        },
+        "3": {
+            "senha": "123",
+            "dinheiro": 0,
+            "idade": 15,
+            "tipo": "CLIENTE",
+            "nomeDeUsuario": "bruno@email.com",
+            "id": 3,
+            "email": "bruno"
         }
     }
 }

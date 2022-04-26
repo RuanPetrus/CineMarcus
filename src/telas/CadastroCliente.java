@@ -22,7 +22,7 @@ public class CadastroCliente extends javax.swing.JFrame {
     public CadastroCliente() {
         initComponents();
         setLocationRelativeTo(null);
-        txtEmail.requestFocus();
+        txtNomeDeUsuario.requestFocus();
         login = Login.getInstance();
     }
 
@@ -36,8 +36,8 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        txtNomeDeUsuario = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
+        txtNomeDeUsuario = new javax.swing.JTextField();
         txtSenha = new javax.swing.JTextField();
         txtIdade = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
@@ -55,19 +55,19 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtNomeDeUsuario.setForeground(new java.awt.Color(204, 204, 204));
-        txtNomeDeUsuario.setText("example@email.com");
-        txtNomeDeUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeDeUsuarioActionPerformed(evt);
-            }
-        });
-
         txtEmail.setForeground(new java.awt.Color(204, 204, 204));
-        txtEmail.setText("username");
+        txtEmail.setText("example@email.com");
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
+            }
+        });
+
+        txtNomeDeUsuario.setForeground(new java.awt.Color(204, 204, 204));
+        txtNomeDeUsuario.setText("username");
+        txtNomeDeUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeDeUsuarioActionPerformed(evt);
             }
         });
 
@@ -132,11 +132,11 @@ public class CadastroCliente extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNomeDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(39, 39, 39)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNomeDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -175,11 +175,11 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomeDeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -227,13 +227,13 @@ public class CadastroCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Todos os campos de cadastro devem estar preenchidos");
         }else if(login.existeContaNome(nomeDeUsuario)) {
             JOptionPane.showMessageDialog(null, "Já existe uma conta com esse nome de usuário");
-            txtNomeDeUsuario.setText("");
-            txtNomeDeUsuario.requestFocus();
+            txtEmail.setText("");
+            txtEmail.requestFocus();
 
         }else if(login.existeContaEmail(email)) {
             JOptionPane.showMessageDialog(null, "Já existe uma conta com esse email");
-            txtEmail.setText("");
-            txtEmail.requestFocus();
+            txtNomeDeUsuario.setText("");
+            txtNomeDeUsuario.requestFocus();
 
         }else {
             Pessoa novoUsuario = new Cliente(0, idade, email, senha, nomeDeUsuario);
@@ -249,13 +249,13 @@ public class CadastroCliente extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void txtNomeDeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeDeUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeDeUsuarioActionPerformed
-
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtNomeDeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeDeUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeDeUsuarioActionPerformed
 
     private void btnCadastrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseEntered
         btnCadastrar.setBackground(new java.awt.Color(255, 0, 0));
