@@ -17,7 +17,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     private final Login login;
     /**
-     * Creates new form CadastroCliente
+     * Inicializa a classe
      */
     public CadastroCliente() {
         initComponents();
@@ -207,8 +207,13 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+        /*
+        *Função responsável por verificar os dados e armazena-los no json
+        *
+        */
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        
+        
         String nomeDeUsuario = txtNomeDeUsuario.getText();
         String email = txtEmail.getText();
         String senha = txtSenha.getText();

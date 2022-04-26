@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.json.JSONObject;
 
+/*
+    Classe que representa Sessões
+*/
 
 public class Sessao implements JsonSerializavel{
     private Integer id;
@@ -29,6 +32,9 @@ public class Sessao implements JsonSerializavel{
         this.preco = preco;
         this.filmeId = filmeId;
     }
+    /*
+        Cria objeto SESSAO a partir de JSON
+    */
     
     public Sessao(JSONObject json) {
         data = json.getString("data");
@@ -97,7 +103,9 @@ public class Sessao implements JsonSerializavel{
     public void setId(Integer id) {
         this.id = id;
     }
-
+    /*
+        Transforma em JSON
+    */
     @Override
     public JSONObject toJSON() {
         JSONObject json = new JSONObject();

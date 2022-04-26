@@ -31,9 +31,10 @@ public class TelaFilme extends javax.swing.JFrame {
     private final List<Sessao> listaSessoes;
     private final SessaoController sessaoController;
     public final List<Boolean> listaSelected;
+    private int sessaoSelecionadaID;
 
     
-    private final Filme filme;
+    private Filme filme;
     /**
      * Creates new form TelaFilme
      * @param filme
@@ -122,8 +123,6 @@ public class TelaFilme extends javax.swing.JFrame {
         lblFilme = new javax.swing.JLabel();
         cmbSessoes = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtSinopse = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtGenero = new javax.swing.JTextField();
@@ -143,6 +142,8 @@ public class TelaFilme extends javax.swing.JFrame {
         btnProcurar = new javax.swing.JButton();
         COFimgLogo = new javax.swing.JLabel();
         btnVoltar1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtSinopse = new javax.swing.JTextArea();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -160,11 +161,6 @@ public class TelaFilme extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel2.setText("Sinopse:");
-
-        txtSinopse.setEditable(false);
-        txtSinopse.setColumns(20);
-        txtSinopse.setRows(5);
-        jScrollPane1.setViewportView(txtSinopse);
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel3.setText("Genero:");
@@ -240,7 +236,7 @@ public class TelaFilme extends javax.swing.JFrame {
         pnlAssentos.setLayout(pnlAssentosLayout);
         pnlAssentosLayout.setHorizontalGroup(
             pnlAssentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 352, Short.MAX_VALUE)
         );
         pnlAssentosLayout.setVerticalGroup(
             pnlAssentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,24 +273,25 @@ public class TelaFilme extends javax.swing.JFrame {
                                 .addComponent(checkDub)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(82, 82, 82))
+                                .addGap(247, 247, 247))
                             .addGroup(pnlSessaoLayout.createSequentialGroup()
-                                .addGroup(pnlSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSessaoLayout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(30, 30, 30))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSessaoLayout.createSequentialGroup()
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(23, 23, 23)))
-                                .addGroup(pnlSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSala, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(1, 1, 1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSessaoLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(165, 165, 165))
+                                .addGroup(pnlSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(pnlSessaoLayout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtPreco, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                                    .addGroup(pnlSessaoLayout.createSequentialGroup()
+                                        .addGroup(pnlSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSessaoLayout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addGap(30, 30, 30))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSessaoLayout.createSequentialGroup()
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(23, 23, 23)))
+                                        .addGroup(pnlSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtData, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                            .addComponent(txtSala))))
+                                .addGap(156, 156, 156))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSessaoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnComprar)
@@ -363,6 +360,12 @@ public class TelaFilme extends javax.swing.JFrame {
             }
         });
 
+        txtSinopse.setColumns(20);
+        txtSinopse.setLineWrap(true);
+        txtSinopse.setRows(5);
+        txtSinopse.setSelectionColor(new java.awt.Color(102, 204, 255));
+        jScrollPane1.setViewportView(txtSinopse);
+
         javax.swing.GroupLayout pnlFilmesLayout = new javax.swing.GroupLayout(pnlFilmes);
         pnlFilmes.setLayout(pnlFilmesLayout);
         pnlFilmesLayout.setHorizontalGroup(
@@ -380,22 +383,22 @@ public class TelaFilme extends javax.swing.JFrame {
                             .addComponent(pnlSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pnlFilmesLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(pnlFilmesLayout.createSequentialGroup()
-                        .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlFilmesLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlFilmesLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(cmbSessoes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnlFilmesLayout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlFilmesLayout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(31, 31, 31)
+                                    .addComponent(cmbSessoes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnProcurar)
                         .addGap(148, 148, 148))))
@@ -416,22 +419,21 @@ public class TelaFilme extends javax.swing.JFrame {
                 .addComponent(lblFilme)
                 .addGap(22, 22, 22)
                 .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFilmesLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(102, 102, 102)
-                        .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
-                        .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbSessoes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnProcurar)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbSessoes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProcurar))
+                .addGap(18, 18, 18)
                 .addComponent(pnlSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -452,6 +454,12 @@ public class TelaFilme extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        /*
+        *   Função responsável por selecionar uma sessão do ComboBox
+        *   e inserir informações relacionadas à essa sessão,
+        *   colocando seus respectivos assentos também
+        *
+        */
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
         int idx = cmbSessoes.getSelectedIndex();
         String txt = cmbSessoes.getItemAt(idx);
@@ -463,7 +471,7 @@ public class TelaFilme extends javax.swing.JFrame {
             for (int i = 0; i < listaSessoes.size(); i++) {
                 Sessao sess = listaSessoes.get(i);
                 if(Objects.equals(listaSessoes.get(i).getFilmeId(), filme.getId()) && listaSessoes.get(i).getData().equals(txt)){
-
+                    sessaoSelecionadaID = sess.getId();
                     txtData.setText(txt);
                     txtPreco.setText(Double.toString(sess.getPreco()));
                     txtSala.setText(Integer.toString(sess.getSala()));
@@ -479,7 +487,7 @@ public class TelaFilme extends javax.swing.JFrame {
             }
         }
         
-        // Insere os assentos
+        // Insere os assentos no Painel
         
         for(int i=0; i<listaSessoes.size();i++){
             Sessao sess = listaSessoes.get(i);
@@ -623,7 +631,7 @@ public class TelaFilme extends javax.swing.JFrame {
                 assentos+= item + " ";
             }
             
-            new TelaCompra(this, assentos, cmbSessoes.getSelectedIndex()-1, selecionado.size()).setVisible(true);
+            new TelaCompra(this, assentos, sessaoSelecionadaID, selecionado.size()).setVisible(true);
             dispose();
         } 
     }//GEN-LAST:event_btnComprarActionPerformed

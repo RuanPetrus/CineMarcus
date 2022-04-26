@@ -18,7 +18,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     
     private final Login login;
     /**
-     * Creates new form CadastroFuncionario
+     * Inicializa valores para a classe
      */
     public CadastroFuncionario() {
         initComponents();
@@ -226,6 +226,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
+    /*
+    *   Botão que irá fazer a verificação dos campos, e se for válido, irá armazenar no JSON
+    */
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         String nomeDeUsuario = txtNomeDeUsuario.getText();
         String nomeCompleto = txtNomeCompleto.getText();

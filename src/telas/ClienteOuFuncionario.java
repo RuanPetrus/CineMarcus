@@ -11,7 +11,7 @@ package telas;
 public class ClienteOuFuncionario extends javax.swing.JFrame {
 
     /**
-     * Creates new form ClienteOuFuncionario
+     * Inicializa a classe
      */
     public ClienteOuFuncionario() {
         initComponents();
@@ -131,7 +131,8 @@ public class ClienteOuFuncionario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    // Funções responsaveis por alterar as cores do botão quando passado o mouse por cima
+    
     private void COFBtnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_COFBtnClienteMouseEntered
         COFBtnCliente.setBackground(new java.awt.Color(255, 0, 0));
     }//GEN-LAST:event_COFBtnClienteMouseEntered

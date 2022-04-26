@@ -8,19 +8,28 @@ import org.json.JSONObject;
 
 /**
  *
- * @author ruan
+ * @author ruan, bruno, ana
  */
+
+/*
+    Classe que herda de pessoa, mas que difere da classe ADMIN
+*/
 public class Cliente extends Pessoa{
+    
+    
 
     private float dinheiro;
-    final private Integer idade;
+    private Integer idade;
+    
     
     public Cliente(float dinheiro, Integer idade, String email, String senha, String nomeDeUsuario) {
         super(email, senha, nomeDeUsuario);
         this.dinheiro = dinheiro;
         this.idade = idade;
     }
-    
+    /*
+        Cria objeto CLIENTE a partir do JSON
+    */
     public Cliente(JSONObject json) {
         super(json);
         this.dinheiro = (float) json.getFloat("dinheiro");
@@ -29,6 +38,10 @@ public class Cliente extends Pessoa{
     
     public void setDinheiro(float dinheiro) {
         this.dinheiro = dinheiro;
+    }
+    
+    public void setIdade(Integer idade) {
+        this.idade = idade;
     }
     
     public float getDinheiro() {
@@ -43,7 +56,9 @@ public class Cliente extends Pessoa{
     public TipoPessoa getTipo() {
         return TipoPessoa.CLIENTE;
     }
-    
+    /* 
+        Tranforma instância em um JSON
+    */
     @Override
     public JSONObject toJSON() {
         JSONObject json = super.toJSON();

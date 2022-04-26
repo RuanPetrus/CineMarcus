@@ -13,6 +13,10 @@ import org.json.JSONObject;
  *
  * @author ruan
  */
+
+/*
+*   Classe Responsável por controlar filmes
+*/
 public class FilmeController extends GerenciadorJson<Filme> {
     private static FilmeController instance;
     
@@ -20,6 +24,9 @@ public class FilmeController extends GerenciadorJson<Filme> {
         super("filmes.json");
     }
     
+    /*
+        Retorna a única instância de filmes
+    */
     public static FilmeController getInstance() {
         if (instance == null) {
             instance = new FilmeController();
@@ -27,16 +34,22 @@ public class FilmeController extends GerenciadorJson<Filme> {
         
         return instance;
     }
-    
+    /*
+        Retorna Filmes de forma iterados
+    */
     public Collection<Filme> getFilmes() {
         return jsonTratado.values();
     }
-    
+    /*
+        Retorna um HashMap de Filmes
+    */
     public Map getMapFilmes() {
         return jsonTratado;
     }
     
-    
+    /*
+        Cria um FILME a partir do JSON
+    */
     @Override
     protected Filme carregarObjeto(JSONObject json) {
         return new Filme(json);

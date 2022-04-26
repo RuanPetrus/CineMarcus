@@ -6,11 +6,13 @@ package cineMarcus;
 
 import org.json.JSONObject;
 
-
+    /*
+        classe que herda de pessoa e difere de Cliente com os dados de ADMIN
+    */
 public class Admin extends Pessoa{
 
    
-
+    
     final private String nomeCompleto;
     final private String cpf;
     
@@ -19,7 +21,10 @@ public class Admin extends Pessoa{
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
     }
-
+    
+    /*
+        Cria objeto ADMIN a partir do JSON
+    */
     public Admin(JSONObject json) {
         super(json);
         nomeCompleto = json.getString("nomeCompleto");
@@ -38,7 +43,9 @@ public class Admin extends Pessoa{
     public TipoPessoa getTipo(){
         return TipoPessoa.ADMIN;
     }
-    
+    /* 
+        Tranforma instância em um JSON
+    */
     @Override
     public JSONObject toJSON() {
         JSONObject json = super.toJSON();

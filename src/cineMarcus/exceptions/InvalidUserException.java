@@ -8,6 +8,10 @@ package cineMarcus.exceptions;
  *
  * @author ruan
  */
+
+/*
+    Exception de usuário inválido
+*/
 public class InvalidUserException extends Exception{
     public InvalidUserException(String errorMessage) {
         super(errorMessage);

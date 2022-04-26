@@ -28,7 +28,7 @@ public class CadastroDeFilme extends javax.swing.JFrame {
     private byte[] bytesArquivo;
     
     /**
-     * Creates new form CadastroDeFilme
+     * Inicializa a classe
      */
     public CadastroDeFilme() {
         initComponents();
@@ -57,10 +57,11 @@ public class CadastroDeFilme extends javax.swing.JFrame {
         lblGenero = new javax.swing.JLabel();
         lblClassificacao = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        txtSinopse = new javax.swing.JTextField();
         txtGenero = new javax.swing.JTextField();
         COFimgLogo = new javax.swing.JLabel();
         btnVoltar1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtSinopse = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CineMarcus - Cadastro de Filme");
@@ -68,8 +69,6 @@ public class CadastroDeFilme extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtClassificacao.setForeground(new java.awt.Color(204, 204, 204));
-        txtClassificacao.setText("Classif. indicativa");
         txtClassificacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtClassificacaoActionPerformed(evt);
@@ -125,20 +124,14 @@ public class CadastroDeFilme extends javax.swing.JFrame {
         lblClassificacao.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         lblClassificacao.setText("Classificação:");
 
-        txtNome.setForeground(new java.awt.Color(204, 204, 204));
-        txtNome.setText("Nome do filme");
-
-        txtSinopse.setForeground(new java.awt.Color(204, 204, 204));
-        txtSinopse.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtSinopse.setText("Sinopse do filme");
-        txtSinopse.addActionListener(new java.awt.event.ActionListener() {
+        txtNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSinopseActionPerformed(evt);
+                txtNomeActionPerformed(evt);
             }
         });
 
-        txtGenero.setForeground(new java.awt.Color(204, 204, 204));
-        txtGenero.setText("Gênero");
+        txtGenero.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         COFimgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         COFimgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
@@ -152,44 +145,48 @@ public class CadastroDeFilme extends javax.swing.JFrame {
             }
         });
 
+        txtSinopse.setColumns(20);
+        txtSinopse.setLineWrap(true);
+        txtSinopse.setRows(5);
+        txtSinopse.setSelectionColor(new java.awt.Color(102, 204, 255));
+        jScrollPane1.setViewportView(txtSinopse);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSinopse)
+                            .addComponent(lblNome)
                             .addComponent(lblGenero)
                             .addComponent(lblClassificacao)
-                            .addComponent(lblNome))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblSinopse))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblPreviaImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnCriar)
-                                    .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(55, 55, 55)
-                                .addComponent(btnInserirImagem))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVoltar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(56, 56, 56)
+                                        .addComponent(btnCriar))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(7, 7, 7)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtClassificacao, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                            .addComponent(txtGenero)
+                                            .addComponent(txtNome))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnInserirImagem)
+                                    .addComponent(lblPreviaImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())))
+                    .addComponent(COFimgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,16 +211,16 @@ public class CadastroDeFilme extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtClassificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblClassificacao))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSinopse, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSinopse)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(lblPreviaImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnInserirImagem)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 31, Short.MAX_VALUE)
                 .addComponent(btnCriar)
                 .addGap(24, 24, 24))
         );
@@ -232,7 +229,7 @@ public class CadastroDeFilme extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +238,9 @@ public class CadastroDeFilme extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Função que ira extrair o filme e sua respectiva imagem para colocar no painel
+     */
     private void btnInserirImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirImagemActionPerformed
         JFileChooser inserirArquivo = new JFileChooser();
         inserirArquivo.setAcceptAllFileFilterUsed(false);
@@ -264,6 +263,10 @@ public class CadastroDeFilme extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnInserirImagemActionPerformed
 
+    /**
+     * Função que irá verificar os valores dos parâmetros e armazenar no JSON
+     */
+    
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
         String nome = txtNome.getText();
         String genero = txtGenero.getText();
@@ -276,7 +279,7 @@ public class CadastroDeFilme extends javax.swing.JFrame {
                 try {
                     
                 int classificacaoI = Integer.parseInt(classificacao);
-                if (classificacaoI <= 0) {
+                if (classificacaoI < 0) {
                     throw new NumberFormatException();
                 }
                 
@@ -288,6 +291,7 @@ public class CadastroDeFilme extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null, "Filme Criado com sucesso");
                 dispose();
+                new PainelDoAdmin().setVisible(true);
                 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Insira um valor válido", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -299,10 +303,6 @@ public class CadastroDeFilme extends javax.swing.JFrame {
     private void txtClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClassificacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClassificacaoActionPerformed
-
-    private void txtSinopseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSinopseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSinopseActionPerformed
 
     private void btnCriarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarMouseEntered
         btnCriar.setBackground(new java.awt.Color(255, 0, 0));
@@ -324,6 +324,10 @@ public class CadastroDeFilme extends javax.swing.JFrame {
         dispose();
         new PainelDoAdmin().setVisible(true);
     }//GEN-LAST:event_btnVoltar1ActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,6 +371,7 @@ public class CadastroDeFilme extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblClassificacao;
     private javax.swing.JLabel lblGenero;
     private javax.swing.JLabel lblNome;
@@ -375,6 +380,6 @@ public class CadastroDeFilme extends javax.swing.JFrame {
     private javax.swing.JTextField txtClassificacao;
     private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSinopse;
+    private javax.swing.JTextArea txtSinopse;
     // End of variables declaration//GEN-END:variables
 }

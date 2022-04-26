@@ -18,7 +18,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     final private Login login;
     /**
-     * Creates new form Final
+     * Inicializa classe
      */
     public TelaLogin() {
         initComponents();
@@ -175,6 +175,10 @@ public class TelaLogin extends javax.swing.JFrame {
         LoginBtnRegistrar.setBackground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_LoginBtnRegistrarMouseExited
 
+    /*
+    *   Função responsável por verificar login do usuário, e caso for válido
+    *   irá entrar nas outras classes
+    */
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         String nomeOuEmail = txtLogin.getText();
         String senha = new String(txtSenha.getPassword());

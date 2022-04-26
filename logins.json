@@ -13,7 +13,7 @@
         "2": {
             "senha": "123",
             "dinheiro": 800,
-            "idade": 15,
+            "idade": 16,
             "tipo": "CLIENTE",
             "nomeDeUsuario": "cliente",
             "id": 2,

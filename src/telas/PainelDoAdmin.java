@@ -24,7 +24,9 @@ public class PainelDoAdmin extends javax.swing.JFrame {
     private final SessaoController sessaoController;
     private final List<Filme> listaFilmes;
 
-    
+    /*
+    *   Inicializa valores da classe
+    */
     public PainelDoAdmin() {
         initComponents();
         setLocationRelativeTo(null);
@@ -40,25 +42,31 @@ public class PainelDoAdmin extends javax.swing.JFrame {
         
         for (int i = 0; i < listaFilmes.size(); i++) {          
             Filme filme = listaFilmes.get(i);
-
+            
+            // Calcula o x e o y que irá ficar no painel
             int x = 25 + (167 * (i / 2));
             int y = 25 + (165 * (i % 2));
             
+            // Cria uma nova label para colocar a imagem do Filme nela
             JLabel labelFilme = new JLabel();
             PainelDoAdmin self = this;
             labelFilme.setIcon(new ImageIcon(filme.getPoster()));
             
-            //labelFilme.addMouseListener(new java.awt.event.MouseAdapter() {
-                //@Override
-                //public void mouseClicked(java.awt.event.MouseEvent evt) {
-                 //   new PainelDoAdmin(filme, self).setVisible(true);
-                //}
-            //});
+            labelFilme.addMouseListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    new TelaFilmeAdmin(filme, self).setVisible(true);
+                    dispose();
+                }
+            });
             
             labelFilme.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            
+            // Seta as dimensões do painel que contém a imagem e adiciona na Label Pai
             labelFilme.setBounds(x, y, 117, 150);
             pnlFilmes.add(labelFilme);
             
+            // Verifica se está no último filme para aumentar a dimensão do painel
             if (i == listaFilmes.size() - 1) {
                 pnlFilmes.setPreferredSize(new Dimension(x + 132, 409));
             }
@@ -84,8 +92,8 @@ public class PainelDoAdmin extends javax.swing.JFrame {
         BtnCS = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         LoginImgLogo1 = new javax.swing.JLabel();
-        pnlFilmes = new javax.swing.JScrollPane();
-        jPanel2 = new javax.swing.JPanel();
+        scrollPane = new javax.swing.JScrollPane();
+        pnlFilmes = new javax.swing.JPanel();
 
         LoginImgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LoginImgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
@@ -135,21 +143,25 @@ public class PainelDoAdmin extends javax.swing.JFrame {
         LoginImgLogo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LoginImgLogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
 
+        scrollPane.setBorder(null);
+        scrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        pnlFilmes.setBackground(new java.awt.Color(255, 255, 255));
         pnlFilmes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pnlFilmes.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        pnlFilmes.setPreferredSize(new java.awt.Dimension(577, 300));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        javax.swing.GroupLayout pnlFilmesLayout = new javax.swing.GroupLayout(pnlFilmes);
+        pnlFilmes.setLayout(pnlFilmesLayout);
+        pnlFilmesLayout.setHorizontalGroup(
+            pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 647, Short.MAX_VALUE)
+        );
+        pnlFilmesLayout.setVerticalGroup(
+            pnlFilmesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 349, Short.MAX_VALUE)
+        );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        scrollPane.setViewportView(pnlFilmes);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -158,42 +170,36 @@ public class PainelDoAdmin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(pnlFilmes, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(BtnCS, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(123, 123, 123)
-                            .addComponent(BtnCF, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnCS, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnCF, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(145, 145, 145)
+                                .addGap(245, 245, 245)
                                 .addComponent(jLabel1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(LoginImgLogo1)))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                                .addGap(148, 148, 148)
+                                .addComponent(LoginImgLogo1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(LoginImgLogo1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addGap(4, 4, 4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(pnlFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LoginImgLogo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnCS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnCF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                    .addComponent(BtnCF, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnCS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         BtnCF.getAccessibleContext().setAccessibleDescription("");
@@ -204,7 +210,7 @@ public class PainelDoAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +288,7 @@ public class PainelDoAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel LoginImgLogo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane pnlFilmes;
+    private javax.swing.JPanel pnlFilmes;
+    private javax.swing.JScrollPane scrollPane;
     // End of variables declaration//GEN-END:variables
 }

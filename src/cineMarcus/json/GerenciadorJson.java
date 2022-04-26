@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+    /*
+    *Classe baseada no trabalho de Ana Sofia Schweizer Silvestre, Davi Jesus de Almeida Paturi, Victor Hugo França Lisboa
+    */
 package cineMarcus.json;
 
 import java.io.BufferedReader;
@@ -21,6 +25,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+/*
+    Classe responsável por salvar, carregar e ler de um arquivo JSON
+*/
 public abstract class GerenciadorJson<T extends JsonSerializavel> {
     
     /**

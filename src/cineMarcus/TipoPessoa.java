@@ -8,6 +8,9 @@ package cineMarcus;
  *
  * @author ruan
  */
+/*
+    ENUM de tipo de Pessoas
+*/
 public enum TipoPessoa {
     CLIENTE, ADMIN, INDEFINIDO
 }

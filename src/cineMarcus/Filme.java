@@ -9,7 +9,12 @@ import org.json.JSONObject;
 import cineMarcus.auxiliar.CompressorImagem;
 import java.util.Base64;
 
+/*
+    Classe que representa o Filme
+*/
 public class Filme implements JsonSerializavel{
+    
+    // 
 
     private Integer id;
     private String nome;
@@ -25,6 +30,9 @@ public class Filme implements JsonSerializavel{
         this.genero = genero;
         this.classificacao = classificacao;
     }
+    /*
+        Cria objeto FILME a partir do JSON
+    */
     
     public Filme(JSONObject json) {
         id = json.getInt("id");
@@ -86,7 +94,9 @@ public class Filme implements JsonSerializavel{
     public void setId(Integer id) {
         this.id = id;
     }
-
+    /* 
+        Tranforma instância em um JSON
+    */      
     @Override
     public JSONObject toJSON() {
         JSONObject json = new JSONObject();

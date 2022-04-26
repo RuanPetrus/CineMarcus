@@ -11,9 +11,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
-
+/*
+    Classe auxiliar que ajuda no gerenciamento de imagens
+*/
 public class CompressorImagem {
-    
+    /*
+        Comprime imagens
+    */
     public static byte[] comprimir (byte[] imagem, int largura, int altura) {
         try {
             BufferedImage image = bytesToImage(imagem);
@@ -26,6 +30,9 @@ public class CompressorImagem {
         }
     }
     
+    /*
+        Gera imagem a partir de Bytes
+    */
   
     public static BufferedImage bytesToImage (byte[] bytes) throws IOException {
         InputStream is = new ByteArrayInputStream(bytes);
@@ -33,7 +40,10 @@ public class CompressorImagem {
         return bi;
     }
     
-   
+    /*
+    Gera Bytes a partir de imagens
+    */
+    
     public static byte[] imageToBytes (BufferedImage image, String format) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(image, format, baos);

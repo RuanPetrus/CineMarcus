@@ -13,7 +13,9 @@ import java.util.logging.Logger;
 
 import org.json.JSONObject;
 
-
+/*
+    Classe responsável por controlar pessoas
+*/
 public class Login extends GerenciadorJson<Pessoa> {
    
     private static Login instance;
@@ -23,23 +25,31 @@ public class Login extends GerenciadorJson<Pessoa> {
     public Login() {
         super("logins.json");
     }
-    
+    /*
+        Retorna a única instância
+    */
     public static Login getInstance() {
         if (instance == null) {
             instance = new Login();
         }
         return instance;
     }
-    
+    /*
+        Verifica se existe a conta com o nome
+    */
     public boolean existeContaNome(String nomeInserido) {
         return valueCollection().stream().anyMatch(u -> u.getNomeDeUsuario().equals(nomeInserido));
     }
-    
+    /*
+        Verifica se existe a conta com o email
+    */
     public boolean existeContaEmail(String emailInserido) {
         return valueCollection().stream().anyMatch(u -> u.getEmail().equals(emailInserido));
     }
     
-
+    /*
+        Verifica se o login existe
+    */
     public void validaLogin(String nomeOuEmailInserido, String senhaInserida) throws InvalidUserException, InvalidPasswordException {
         Optional<Pessoa> optionalUsuario = valueCollection().stream().filter(u -> u.getNomeDeUsuario().equals(nomeOuEmailInserido)).findFirst();
         
@@ -65,7 +75,10 @@ public class Login extends GerenciadorJson<Pessoa> {
     public Pessoa getUsuarioLogado() {
         return usuarioLogado;
     }
-
+    
+    /*
+        Cria PESSOA a partir de JSON
+    */
     @Override
     protected Pessoa carregarObjeto(JSONObject json) {
         TipoPessoa tipo = json.getEnum(TipoPessoa.class, "tipo");

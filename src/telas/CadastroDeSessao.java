@@ -31,20 +31,27 @@ public class CadastroDeSessao extends javax.swing.JFrame {
    private final FilmeController filmeController;
    private final SessaoController sessaoController;
    private final List<Filme> listaFilmes;
-    
+    /**
+     * Inicializa valores que serão utilizados depois
+     */
     public CadastroDeSessao() {
         initComponents();
         setLocationRelativeTo(null);
         filmeController = FilmeController.getInstance();
         sessaoController = SessaoController.getInstance();
         listaFilmes = filmeController.getFilmes().parallelStream().collect(Collectors.toList());
-
+        
+        
+        // Carrega as informações nos paineis e labels
         mostrarData();
         carregarFilmes();
     }
 
+    /**
+     * Função responsável por pegar a data atual e formatar em um padrão
+     */
     public void mostrarData() {
-        String strDate = new SimpleDateFormat("dd/MM/yyyy H:mm", Locale.ENGLISH).format(new Date());
+        String strDate = new SimpleDateFormat("dd/MM/yyyy H:mm E", Locale.ENGLISH).format(new Date());
         txtData.setText(strDate);
         
     }
@@ -254,6 +261,7 @@ public class CadastroDeSessao extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Sessao Criada com sucesso");
             dispose();
+            new PainelDoAdmin().setVisible(true);
             
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Insira um valor válido", "Erro", JOptionPane.ERROR_MESSAGE);

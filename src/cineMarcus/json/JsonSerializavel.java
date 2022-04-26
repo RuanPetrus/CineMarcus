@@ -2,10 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+    /*
+    * Classe baseada no trabalho de Ana Sofia Schweizer Silvestre, Davi Jesus de Almeida Paturi, Victor Hugo França Lisboa
+    */
+
 package cineMarcus.json;
 
 import org.json.JSONObject;
-
+/*
+    Classe responsável por objetos JSON
+*/
 public interface JsonSerializavel {
     
     /**

@@ -11,19 +11,24 @@ import org.json.JSONObject;
  *
  * @author ruan
  */
+/*
+    Classe responsável por representar uma pessoa 
+*/
 public class Pessoa implements JsonSerializavel {    
 
     private Integer id;
-    private final String email; 
-    private final String senha;
-    private final String nomeDeUsuario;
+    private String email; 
+    private String senha;
+    private String nomeDeUsuario;
     
     public Pessoa(String email, String senha, String nomeDeUsuario ) {
         this.email = email;
         this.senha = senha;
         this.nomeDeUsuario = nomeDeUsuario;
     }
-    
+    /*
+        Cria PESSOA a partir de JSON
+    */
     public Pessoa(JSONObject json) {
         id = json.getInt("id");
         nomeDeUsuario = json.getString("nomeDeUsuario");
@@ -47,6 +52,14 @@ public class Pessoa implements JsonSerializavel {
         return TipoPessoa.INDEFINIDO;
     }
     
+    public void setUsuario(String user) {
+        this.nomeDeUsuario=user;
+    }
+    
+    public void setEmail(String email) {
+        this.email=email;
+    }
+    
     @Override
     public void setId(Integer id) {
         this.id = id;
@@ -57,6 +70,9 @@ public class Pessoa implements JsonSerializavel {
         return id;
     }
 
+    /*
+        Gera objeto tipo JSON
+    */
     @Override
     public JSONObject toJSON() {
         JSONObject json = new JSONObject();
